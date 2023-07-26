@@ -1,0 +1,26 @@
+<!-- Página de destino -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resultado</title>
+</head>
+<body>
+  <h1>Compra concluída com sucesso!</h1>
+  
+  <div id="resultado"></div>
+
+  <script>
+    function enviarFormulario(event) {
+  event.preventDefault();
+
+  const perfume1 = document.getElementById('nome').value;
+  const email = document.getElementById('email').value;
+
+  const resultadoDiv = document.getElementById('resultado');
+  resultadoDiv.innerHTML = `<p>Dados do formulário:</p><p>Nome: ${nome}</p><p>Email: ${email}</p>`;
+
+  window.location.href = 'resultado.html';
+}
+  </script>
+</body>
+</html>

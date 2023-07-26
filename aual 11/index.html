@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const nome  = prompt('Digite seu nome completo:');
+        document.body.innerHTML = `Seu nome completo é: <strong>${nome}<strong><br/>`;
+            document.body.innerHTML += `Seu nome tem: <strong>${nome.length}<strong> letras <br/>`;// length serve para descobrir tamanho de uma string ou array
+                document.body.innerHTML += `Segunda letra do seu nome é: <strong>${nome[1]}<strong> <br/>`;
+                    document.body.innerHTML += `Qual  o pimeiro indice  da letra o  no seu nome? <strong>${nome.indexOf('o')}<strong> <br/>`;
+                        document.body.innerHTML += `Qual  o ultimo indice  da letra o  no seu nome? <strong>${nome.lastIndexOf('o')}<strong> <br/>`;
+                            document.body.innerHTML += `As ultimas tres letra do  seu nome são:  <strong>${nome.slice(-3)}<strong> <br/>`;//O método slice() retorna uma cópia de parte de um array a partir de um subarray criado entre as posições. 
+                                document.body.innerHTML += `As palavras  do  seu nome são:  <strong>${nome.split(' ')}<strong><br/>`;//O método split() divide uma String em uma lista ordenada de substrings, coloca essas substrings em um array e retorna o array. A divisão é feita procurando um padrão, onde o padrão é fornecido como o primeiro parâmetro na chamada do método
+                                    document.body.innerHTML += `Seu nome em letra maiuscula é:  <strong>${nome.toLocaleUpperCase()}<strong> <br/>`;
+                                        document.body.innerHTML += `Seu nome em letra minuscula é:  <strong>${nome.toLocaleLowerCase()}<strong> <br/>`
+            
+            
+    </script>
+</body>
+</html>

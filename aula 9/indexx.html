@@ -1,0 +1,62 @@
+<form action="pagina_destino.html" method="post">
+    <label>
+      <input type="radio" name="genero" value="feminino" onclick="exibirPerfumes('feminino')"> Feminino
+    </label>
+    <label>
+      <input type="radio" name="genero" value="masculino" onclick="exibirPerfumes('masculino')"> Masculino
+    </label>
+    <br>
+    <div id="perfumes-select">
+      <label for="perfume">Escolha um perfume:</label>
+      <select name="perfume" id="perfume">
+        <!-- Opções de perfumes femininos -->
+        <optgroup label="Feminino" id="perfumes-femininos" style="display: none;">
+          <option value="feminino1">Perfume Feminino 1</option>
+          <option value="feminino2">Perfume Feminino 2</option>
+          <option value="feminino3">Perfume Feminino 3</option>
+        </optgroup>
+        <!-- Opções de perfumes masculinos -->
+        <optgroup label="Masculino" id="perfumes-masculinos" style="display: none;">
+          <option value="masculino1">Perfume Masculino 1</option>
+          <option value="masculino2">Perfume Masculino 2</option>
+          <option value="masculino3">Perfume Masculino 3</option>
+        </optgroup>
+      </select>
+    </div>
+    <br>
+    <input type="submit" value="Enviar">
+  </form>
+  
+  <script>
+    function exibirPerfumes(genero) {
+      const perfumesSelectDiv = document.getElementById('perfumes-select');
+      const perfumesFemininos = document.getElementById('perfumes-femininos');
+      const perfumesMasculinos = document.getElementById('perfumes-masculinos');
+  
+      if (genero === 'feminino') {
+        perfumesFemininos.style.display = 'block';
+        perfumesMasculinos.style.display = 'none';
+      } else if (genero === 'masculino') {
+        perfumesFemininos.style.display = 'none';
+        perfumesMasculinos.style.display = 'block';
+      } else {
+        perfumesFemininos.style.display = 'none';
+        perfumesMasculinos.style.display = 'none';
+      }
+    }
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form');
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+  
+        const selectedPerfume = document.querySelector('#perfume option:checked').text;
+        const resultadoDiv = document.createElement('div');
+        resultadoDiv.innerHTML = `<p>Compra concluída com sucesso: ${selectedPerfume}</p>`;
+        document.body.appendChild(resultadoDiv);
+  
+        form.reset();
+      });
+    });
+  </script>
+  
