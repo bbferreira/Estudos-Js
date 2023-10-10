@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Opções de Pagamento</title>
+    <script>
+        function exibirOpcoes() {
+            var opcoes = document.getElementById("opcoes");
+            opcoes.style.display = "block";
+        }
+
+        function selecionarOpcao(opcao) {
+            var mensagem = '';
+
+            switch(opcao) {
+                case 'cartao':
+                    mensagem = 'Gostaria de finalizar a compra com cartão de crédito.';
+                    break;
+                case 'pix':
+                    mensagem = 'Gostaria de finalizar a compra via PIX.';
+                    break;
+                case 'codigo':
+                    mensagem = 'Gostaria de gerar um código de pagamento.';
+                    break;
+            }
+
+            // Redirecionar para o WhatsApp com a mensagem predefinida
+            window.location.href = 'https://api.whatsapp.com/send?phone=SEU_NUMERO_DE_TELEFONE&text=' + encodeURIComponent(mensagem);
+        }
+    </script>
+    <style>
+        #opcoes {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Opções de Pagamento</h1>
+
+    <button onclick="exibirOpcoes()">Selecionar Forma de Pagamento</button>
+
+    <div id="opcoes">
+        <h2>Escolha uma opção de pagamento:</h2>
+        <button onclick="selecionarOpcao('cartao')">Finalizar Compra com Cartão de Crédito</button>
+        <button onclick="selecionarOpcao('pix')">Finalizar Compra via PIX</button>
+        <button onclick="selecionarOpcao('codigo')">Gerar Código de Pagamento</button>
+    </div>
+</body>
+</html>

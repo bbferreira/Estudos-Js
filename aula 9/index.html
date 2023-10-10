@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Agendamento</title>
+</head>
+<body>
+
+
+
+  <h1>Escolha seu gênero:</h1>
+  <form action="pagina_destino.html" method="post">
+    <label>
+      <input type="radio" name="genero" value="feminino"> Feminino
+    </label>
+    <label>
+      <input type="radio" name="genero" value="masculino"> Masculino
+    </label>
+    <br>
+    <div id="perfumes-masculinos" style="display: none;">
+      <label for="perfume">Escolha um perfume masculino:</label>
+      <select name="perfume" id="perfume">
+        <option value="1">Perfume 1</option>
+        <option value="2">Perfume 2</option>
+        <option value="3">Perfume 3</option>
+      </select>
+    </div>
+    <br>
+    <input type="submit" value="Enviar">
+  </form>
+
+  <script>
+    // Exibe o select de perfumes masculinos se "Masculino" for selecionado
+    const generoInput = document.querySelector('input[name="genero"]');
+    const perfumesMasculinosDiv = document.getElementById('perfumes-masculinos');
+
+    generoInput.addEventListener('change', function() {
+      if (generoInput.value === 'masculino') {
+        perfumesMasculinosDiv.style.display = 'block';
+      } else {
+        perfumesMasculinosDiv.style.display = 'none';
+      }
+    });
+  </script>
+  <h1>Agendamento</h1>
+
+  <div id="calendario">
+    <div class="horario disponivel" onclick="agendarHorario(this, '23/05/2023', '12:00', 'Corte Degrade')">12:00 - 13:00</div>
+    <!-- Adicione mais horários aqui -->
+  </div>
+
+  <script>
+    function agendarHorario(elemento, data, horario, servico) {
+      if (elemento.classList.contains("disponivel")) {
+        elemento.classList.remove("disponivel");
+        elemento.classList.add("indisponivel");
+        elemento.innerHTML = "Horário indisponível";
+
+        // Mensagem de agendamento
+        var mensagem = "Agendamento realizado:\n";
+        mensagem += "Data: " + data + "\n";
+        mensagem += "Horário: " + horario + "\n";
+        mensagem += "Serviço: " + servico + "\n";
+        mensagem += "Pagamento via Pix.";
+
+        // Exibir mensagem
+        alert(mensagem);
+
+
+
+    
+
+
+      }
+    }
+  </script>
+
+
+<script src="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js"
+data-preference-id="751905658-b7659ebc-e1da-4069-88d5-529aee5da17d" data-source="button">
+</script>
+
+
+<!-- Página HTML -->
+<a href="https://www.mercadopago.com.br/checkout/v1/redirect?preference_id=751905658-b7659ebc-e1da-4069-88d5-529aee5da17d&items[0][title]=Produto1&items[0][quantity]=1&items[0][unit_price]=100&items[1][title]=Produto2&items[1][quantity]=1&items[1][unit_price]=150">Comprar</a>
+
+
+</body>
+</html>

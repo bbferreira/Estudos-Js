@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Exemplo de melhoria de imagem com Canvas</title>
+  </head>
+  <body>
+    <h1>Exemplo de melhoria de imagem com Canvas</h1>
+    <canvas id="meu-canvas"></canvas>
+
+    <script>
+      // obter o elemento canvas
+      let canvas = document.getElementById("meu-canvas");
+
+      // definir a largura e altura do canvas
+      canvas.width = 500;
+      canvas.height = 500;
+
+      // obter o contexto 2D do canvas
+      let ctx = canvas.getContext("2d");
+
+      // criar uma nova imagem
+      let img = new Image();
+      img.src = "minha-imagem.jpg";
+
+      // quando a imagem for carregada, desenhá-la no canvas e aplicar o filtro de brilho
+      img.onload = function() {
+        // desenhar a imagem no canvas
+        ctx.drawImage(img, 0, 0);
+
+        // obter os pixels da imagem
+        let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        let pixels = imageData.data;
+
+        // aplicar o filtro de brilho
+        for (let i = 0; i < pixels.length; i += 4) {
+          pixels[i] += 50; // adicionar 50 ao valor do canal vermelho
+          pixels[i + 1] += 50; // adicionar 50 ao valor do canal verde
+          pixels[i + 2] += 50; // adicionar 50 ao valor do canal azul
+        }
+
+        // atualizar os pixels da imagem no canvas
+        ctx.putImageData(imageData, 0, 0);
+      };
+    </script>
+  </body>
+</html>
